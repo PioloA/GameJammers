@@ -9,7 +9,6 @@ public class MetalDetector : MonoBehaviour
     private float _detectionRadius = 3.0f;
     private int _score = 0;
     public LayerMask _metalObjectLayer;
-
     public GameObject DetectionIndicator;
     
     void Update()
@@ -20,14 +19,17 @@ public class MetalDetector : MonoBehaviour
         {
             DetectionIndicator.SetActive(true);
 
+            // Player input to get Metals
             if (Input.GetKeyDown(KeyCode.E))
             {
                 foreach (Collider metalObject in metalObjects)
                 {
+                    // check if metal object has the component "MetalPickUp"
                     MetalPickUp metalPickUp = metalObject.GetComponent<MetalPickUp>();
                     if (metalPickUp != null)
                     {
                         _score += metalPickUp.pointValue;
+                        GameManager.instance.IncreaseScore(metalPickUp.pointValue);
                         Destroy(metalPickUp.gameObject);
                     }
                 }
