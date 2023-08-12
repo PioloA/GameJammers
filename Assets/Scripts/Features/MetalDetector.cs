@@ -13,6 +13,7 @@ public class MetalDetector : MonoBehaviour
     
     void Update()
     {
+        //Metal Detector Raidius
         Collider[] metalObjects = Physics.OverlapSphere(transform.position, _detectionRadius, _metalObjectLayer);
 
         if (metalObjects.Length > 0)

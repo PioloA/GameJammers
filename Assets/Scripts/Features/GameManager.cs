@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public TMP_Text scoreText;
     private int score = 0;
-
+    private int winScore = 20;
 
     private void Awake()
     {
@@ -25,12 +25,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        UpdateScoreText();
+    }
+
     public void IncreaseScore(int points)
     {
         score += points;
         UpdateScoreText();
+
+        if (score >= winScore)
+        {
+            HandleeWin();
+        }
     }
 
+    private void HandleeWin()
+    {
+        Debug.Log("You Win!");
+    }
     public void UpdateScoreText()
     {
         if (scoreText != null) 
