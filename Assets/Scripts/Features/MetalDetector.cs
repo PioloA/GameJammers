@@ -29,8 +29,9 @@ public class MetalDetector : MonoBehaviour
                     MetalPickUp metalPickUp = metalObject.GetComponent<MetalPickUp>();
                     if (metalPickUp != null)
                     {
+                        //update's the score text
                         _score += metalPickUp.pointValue;
-                        GameManager.instance.IncreaseScore(metalPickUp.pointValue);
+                        GameManager.Instance.IncreaseScore(metalPickUp.pointValue);
                         Destroy(metalPickUp.gameObject);
                     }
                 }
